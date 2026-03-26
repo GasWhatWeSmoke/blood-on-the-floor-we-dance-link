@@ -5,7 +5,7 @@
 - **Primary Platform**: YouTube
 - **YouTube Video ID**: `sb3vU8yWJJ4`
 - **YouTube Link**: `https://www.youtube.com/watch?v=sb3vU8yWJJ4`
-- **Campaign Use Case**: Meta ads traffic to a YouTube video with app-first behavior and browser fallback
+- **Campaign Use Case**: Meta ads traffic directly to a YouTube video
 
 ## Source Notes
 
@@ -31,6 +31,7 @@
 
 ## Practical Takeaway
 
-- The safest immediate ad destination is a tracked HTTPS YouTube watch URL.
-- The best self-hosted compromise is the GitHub Pages `index.html` page, which gives the user a clear tap target to open YouTube and then falls back to the tracked watch page.
-- If Meta placement behavior becomes the bottleneck, the next step is a smart-link platform such as Branch or URLgenius rather than more aggressive custom-scheme hacks.
+- If you do not want your own landing page to appear first, use the direct tracked YouTube watch URL in Meta Ads.
+- Google says normal YouTube links can open in the YouTube app on iOS.
+- Branch documents that Instagram does not support Universal Links reliably inside its in-app browser, so a direct YouTube URL may still open inside Instagram first before handing off.
+- The GitHub Pages site should be treated as a backup archive and not used for this campaign goal.

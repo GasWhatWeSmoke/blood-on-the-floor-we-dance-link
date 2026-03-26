@@ -1,23 +1,22 @@
-# Blood On The Floor We Dance Deep Link
+# Blood On The Floor We Dance Deep Link Backup
 
-Static GitHub Pages landing page for Meta ads traffic to the YouTube video:
+Backup copy of the old GitHub Pages landing page for the YouTube video:
 
 - Artist: GasWhatWeSmoke
 - Video ID: `sb3vU8yWJJ4`
 - Primary file: `index.html`
 
-## What It Does
+## Current Use
 
-- Shows a branded landing page for paid social traffic
-- Lets mobile users tap to open the YouTube app
-- Falls back to the tracked YouTube watch URL after 2.5 seconds
-- Sends desktop visitors straight to the tracked YouTube watch URL
+- This repo is no longer the campaign destination.
+- Meta ads should now use the direct tracked YouTube URL instead.
+- The files here are kept only as an archive / fallback implementation.
 
-## Before Publishing
+## Direct Ad URL
 
-1. Confirm the final GitHub Pages URL in `index.html` is correct for the published repository.
-2. Push this folder to a GitHub repository.
-3. In GitHub, enable Pages for the repository if it is not automatically enabled.
+```text
+https://www.youtube.com/watch?v=sb3vU8yWJJ4&utm_source=meta&utm_medium=paid_social&utm_campaign=blood_on_the_floor_we_dance&utm_content=meta_ad
+```
 
 ## Suggested Repo Names
 

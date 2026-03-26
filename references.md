@@ -5,7 +5,7 @@
 - **Primary Platform**: YouTube
 - **YouTube Video ID**: `sb3vU8yWJJ4`
 - **YouTube Link**: `https://www.youtube.com/watch?v=sb3vU8yWJJ4`
-- **Campaign Use Case**: Meta ads traffic directly to a YouTube video
+- **Campaign Use Case**: Meta ads traffic using a self-hosted Safari-escape workaround for Instagram/iPhone
 
 ## Source Notes
 
@@ -29,9 +29,14 @@
    Checked March 26, 2026.
    Branch states that Facebook paid media can show a leave-Facebook modal and that this modal cannot be bypassed with URL-scheme tricks.
 
+5. **GitHub: yt-deeplink-generator**
+   https://github.com/ashkanRmk/yt-deeplink-generator
+   Checked March 26, 2026.
+   Representative GitHub deep-link generators still rely on a hosted redirect page with app/fallback logic.
+
 ## Practical Takeaway
 
-- If you do not want your own landing page to appear first, use the direct tracked YouTube watch URL in Meta Ads.
 - Google says normal YouTube links can open in the YouTube app on iOS.
-- Branch documents that Instagram does not support Universal Links reliably inside its in-app browser, so a direct YouTube URL may still open inside Instagram first before handing off.
-- The GitHub Pages site should be treated as a backup archive and not used for this campaign goal.
+- Branch documents that Instagram does not support Universal Links reliably inside its in-app browser, so a direct YouTube URL alone is not enough.
+- The current repo workaround is to try escaping Instagram into Safari first, then rely on the normal YouTube link from Safari.
+- This is a best-effort workaround, not a guaranteed platform bypass.

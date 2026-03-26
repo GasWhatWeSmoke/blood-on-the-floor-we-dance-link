@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blood On The Floor We Dance | GasWhatWeSmoke</title>
-  <meta name="description" content="Open Blood On The Floor We Dance by GasWhatWeSmoke in YouTube.">
-  <meta name="theme-color" content="#120507">
+  <title>Opening YouTube | Blood On The Floor We Dance</title>
+  <meta name="description" content="Opening Blood On The Floor We Dance in YouTube.">
+  <meta name="theme-color" content="#020203">
   <meta property="og:title" content="Blood On The Floor We Dance">
   <meta property="og:description" content="Open the music video in YouTube.">
   <meta property="og:type" content="website">
@@ -15,22 +15,14 @@
   <meta name="twitter:title" content="Blood On The Floor We Dance">
   <meta name="twitter:description" content="Open the music video in YouTube.">
   <meta name="twitter:image" content="https://i.ytimg.com/vi/sb3vU8yWJJ4/hqdefault.jpg">
-  <meta property="al:ios:url" content="youtube://watch?v=sb3vU8yWJJ4">
-  <meta property="al:ios:app_name" content="YouTube">
-  <meta property="al:android:url" content="vnd.youtube:sb3vU8yWJJ4">
-  <meta property="al:android:app_name" content="YouTube">
-  <meta property="al:android:package" content="com.google.android.youtube">
-  <meta property="al:web:url" content="https://www.youtube.com/watch?v=sb3vU8yWJJ4&utm_source=meta&utm_medium=paid_social&utm_campaign=blood_on_the_floor_we_dance">
   <style>
     :root {
-      --bg: #120507;
-      --panel: rgba(17, 11, 13, 0.82);
-      --line: rgba(255, 255, 255, 0.12);
-      --text: #f8f2ef;
-      --muted: #d9beb6;
-      --accent: #ff5b4d;
-      --accent-soft: rgba(255, 91, 77, 0.18);
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      color-scheme: dark;
+      --bg: #020203;
+      --text: #f8f8f6;
+      --muted: #b1b1ac;
+      --line: rgba(255, 255, 255, 0.08);
+      --accent: #ffffff;
     }
 
     * {
@@ -41,10 +33,7 @@
     body {
       margin: 0;
       min-height: 100%;
-      background:
-        radial-gradient(circle at top, rgba(255, 91, 77, 0.24), transparent 30%),
-        radial-gradient(circle at bottom left, rgba(183, 32, 40, 0.28), transparent 34%),
-        linear-gradient(160deg, #070304 0%, #120507 55%, #1a090c 100%);
+      background: var(--bg);
       color: var(--text);
       font-family: "Segoe UI Variable Text", "Segoe UI", "Trebuchet MS", sans-serif;
     }
@@ -52,184 +41,132 @@
     body {
       display: grid;
       place-items: center;
-      padding: 24px;
+      padding: 20px;
     }
 
-    .card {
-      width: min(100%, 560px);
-      padding: 32px 24px;
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01)),
-        var(--panel);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
+    main {
+      width: min(100%, 420px);
+      text-align: center;
     }
 
-    .eyebrow {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 0.75rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
+    .spinner {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 18px;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      border-top-color: rgba(255, 255, 255, 0.9);
+      border-radius: 999px;
+      animation: spin 900ms linear infinite;
     }
 
     h1 {
       margin: 0;
-      font-family: "Arial Narrow", "Franklin Gothic Medium", "Segoe UI", sans-serif;
-      font-size: clamp(2.4rem, 8vw, 4rem);
-      line-height: 0.95;
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+      font-weight: 700;
       letter-spacing: 0.02em;
-      text-transform: uppercase;
     }
 
-    .copy {
-      margin: 18px 0 0;
+    p {
+      margin: 12px 0 0;
       color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    .status {
-      margin: 22px 0 0;
-      padding: 14px 16px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--text);
-      font-size: 0.95rem;
+      line-height: 1.55;
+      font-size: 0.96rem;
     }
 
     .actions {
-      display: grid;
-      gap: 12px;
+      display: none;
+      gap: 10px;
       margin-top: 22px;
+    }
+
+    .actions.visible {
+      display: grid;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 52px;
-      padding: 14px 18px;
+      min-height: 50px;
       border-radius: 999px;
+      padding: 12px 18px;
       text-decoration: none;
       font-weight: 700;
       letter-spacing: 0.03em;
-      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
-    }
-
-    .button:hover {
-      transform: translateY(-1px);
+      border: 1px solid var(--line);
     }
 
     .button.primary {
-      background: linear-gradient(135deg, #ff6f61, #d31f34);
-      color: #fff8f5;
-      box-shadow: 0 10px 32px var(--accent-soft);
+      background: var(--accent);
+      color: #070708;
+      border-color: transparent;
     }
 
     .button.secondary {
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.04);
+      background: transparent;
       color: var(--text);
     }
 
     .note {
-      margin: 20px 0 0;
-      color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.6;
-    }
-
-    .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
       margin-top: 18px;
+      font-size: 0.82rem;
+      color: #8b8b87;
     }
 
-    .pill {
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.78rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 640px) {
-      .card {
-        padding: 26px 18px;
-        border-radius: 22px;
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
       }
     }
   </style>
 </head>
 <body>
-  <main class="card">
-    <p class="eyebrow">GasWhatWeSmoke</p>
-    <h1>Blood On The Floor We Dance</h1>
-    <p class="copy">
-      Open the music video in YouTube with the button below. If the app does not open, this page can fall back to the browser version automatically.
-    </p>
+  <main>
+    <div class="spinner" aria-hidden="true"></div>
+    <h1 id="headline">Opening YouTube...</h1>
+    <p id="status">Trying the fastest route out of the Instagram browser.</p>
 
-    <div class="meta" aria-hidden="true">
-      <span class="pill">Meta Ads Ready</span>
-      <span class="pill">YouTube App First</span>
-      <span class="pill">2.5s Fallback</span>
+    <div class="actions" id="actions">
+      <a class="button primary" id="primary-action" href="#">Open in Safari</a>
+      <a class="button secondary" id="secondary-action" href="#">Open in YouTube</a>
+      <a class="button secondary" id="browser-action" href="#">Watch in Browser</a>
     </div>
 
-    <div class="status" id="status">
-      Tap "Open in YouTube" to launch the app. If it does not open, use the browser fallback.
-    </div>
-
-    <div class="actions">
-      <a class="button primary" id="open-app" href="youtube://watch?v=sb3vU8yWJJ4">Open in YouTube</a>
-      <a class="button secondary" id="open-web" href="https://www.youtube.com/watch?v=sb3vU8yWJJ4&utm_source=meta&utm_medium=paid_social&utm_campaign=blood_on_the_floor_we_dance">Watch in Browser</a>
-    </div>
-
-    <p class="note">
-      If you came from Facebook or Instagram, you may see a leave-app prompt before YouTube opens. Meta controls that step, so this page now uses a tap-to-open flow instead of an automatic app jump.
-    </p>
+    <p class="note" id="note">This page is only here to escape the in-app browser as fast as possible.</p>
   </main>
 
   <script>
     const config = {
       videoId: "sb3vU8yWJJ4",
-      fallbackDelay: 2500,
       defaultTracking: {
         utm_source: "meta",
         utm_medium: "paid_social",
-        utm_campaign: "blood_on_the_floor_we_dance"
+        utm_campaign: "blood_on_the_floor_we_dance",
+        utm_content: "meta_ad"
       }
     };
 
+    const headlineNode = document.getElementById("headline");
     const statusNode = document.getElementById("status");
-    const appButton = document.getElementById("open-app");
-    const webButton = document.getElementById("open-web");
-    let fallbackTimer = null;
+    const noteNode = document.getElementById("note");
+    const actionsNode = document.getElementById("actions");
+    const primaryActionNode = document.getElementById("primary-action");
+    const secondaryActionNode = document.getElementById("secondary-action");
+    const browserActionNode = document.getElementById("browser-action");
 
-    function isMobileDevice() {
-      return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || "");
+    function isIos() {
+      return /iPhone|iPad|iPod/i.test(navigator.userAgent || "");
     }
 
-    function selectAppUrl() {
-      if (/Android/i.test(navigator.userAgent || "")) {
-        return "vnd.youtube:" + config.videoId;
-      }
-
-      if (/iPhone|iPad|iPod/i.test(navigator.userAgent || "")) {
-        return "youtube://watch?v=" + config.videoId;
-      }
-
-      return buildWebUrl();
+    function isAndroid() {
+      return /Android/i.test(navigator.userAgent || "");
     }
 
-    function buildWebUrl() {
+    function isInstagramFamilyBrowser() {
+      return /Instagram|FBAN|FBAV|FB_IAB|FB4A/i.test(navigator.userAgent || "");
+    }
+
+    function buildTrackedWebUrl() {
       const url = new URL("https://www.youtube.com/watch");
       url.searchParams.set("v", config.videoId);
 
@@ -237,79 +174,152 @@
         url.searchParams.set(key, value);
       });
 
-      const inbound = new URLSearchParams(window.location.search);
-      inbound.forEach((value, key) => {
+      new URLSearchParams(window.location.search).forEach((value, key) => {
         url.searchParams.set(key, value);
       });
 
       return url.toString();
     }
 
-    function cancelFallback() {
-      if (fallbackTimer !== null) {
-        window.clearTimeout(fallbackTimer);
-        fallbackTimer = null;
+    function buildYouTubeAppUrl() {
+      return "youtube://watch?v=" + config.videoId;
+    }
+
+    function buildSafariEscapeUrl() {
+      return buildTrackedWebUrl().replace(/^https:\/\//i, "x-safari-https://");
+    }
+
+    function buildLegacySafariEscapeUrl() {
+      return "com-apple-mobilesafari-tab:" + buildTrackedWebUrl();
+    }
+
+    function buildAndroidIntentUrl() {
+      return "intent://www.youtube.com/watch?" +
+        new URL(buildTrackedWebUrl()).searchParams.toString() +
+        "#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=" +
+        encodeURIComponent(buildTrackedWebUrl()) +
+        ";end;";
+    }
+
+    function showActions(mode) {
+      const webUrl = buildTrackedWebUrl();
+      const safariUrl = buildSafariEscapeUrl();
+      const legacySafariUrl = buildLegacySafariEscapeUrl();
+      const youtubeAppUrl = buildYouTubeAppUrl();
+      const androidIntentUrl = buildAndroidIntentUrl();
+
+      actionsNode.classList.add("visible");
+      browserActionNode.href = webUrl;
+
+      if (mode === "instagram-ios") {
+        primaryActionNode.textContent = "Open in Safari";
+        primaryActionNode.href = safariUrl;
+        secondaryActionNode.textContent = "Open in YouTube";
+        secondaryActionNode.href = youtubeAppUrl;
+        noteNode.textContent = "If Safari opens, Safari should have the best shot at handing off to the YouTube app.";
+      } else if (mode === "android") {
+        primaryActionNode.textContent = "Open in YouTube";
+        primaryActionNode.href = androidIntentUrl;
+        secondaryActionNode.textContent = "Watch in Browser";
+        secondaryActionNode.href = webUrl;
+        noteNode.textContent = "Android uses an intent link first, then falls back to the YouTube web URL.";
+      } else {
+        primaryActionNode.textContent = "Open in YouTube";
+        primaryActionNode.href = youtubeAppUrl;
+        secondaryActionNode.textContent = "Watch in Browser";
+        secondaryActionNode.href = webUrl;
+        noteNode.textContent = "If the app does not open, use the browser button.";
       }
+
+      primaryActionNode.addEventListener("click", (event) => {
+        if (mode === "instagram-ios") {
+          event.preventDefault();
+          window.location.href = safariUrl;
+          window.setTimeout(() => {
+            window.location.href = legacySafariUrl;
+          }, 500);
+        }
+      }, { once: true });
     }
 
-    function wireButtons() {
-      const webUrl = buildWebUrl();
-      const appUrl = selectAppUrl();
-      appButton.href = appUrl;
-      webButton.href = webUrl;
-    }
-
-    function updateStatus(message) {
+    function updateStatus(headline, message) {
+      headlineNode.textContent = headline;
       statusNode.textContent = message;
     }
 
-    function scheduleFallback() {
-      cancelFallback();
-      fallbackTimer = window.setTimeout(() => {
-        updateStatus("App not detected. Redirecting to the YouTube watch page.");
-        window.location.href = buildWebUrl();
-      }, config.fallbackDelay);
+    function attemptInstagramIosEscape() {
+      updateStatus("Opening Safari first...", "Trying to leave Instagram's browser before opening YouTube.");
+
+      const safariUrl = buildSafariEscapeUrl();
+      const legacySafariUrl = buildLegacySafariEscapeUrl();
+
+      window.setTimeout(() => {
+        window.location.href = safariUrl;
+      }, 120);
+
+      window.setTimeout(() => {
+        window.location.href = legacySafariUrl;
+      }, 650);
+
+      window.setTimeout(() => {
+        updateStatus("Tap to continue", "Instagram stayed in control. The best free workaround is to force Safari first.");
+        showActions("instagram-ios");
+      }, 1450);
     }
 
-    function attemptOpen() {
-      wireButtons();
+    function attemptAndroidOpen() {
+      updateStatus("Opening YouTube...", "Trying the Android app link first.");
 
-      if (!isMobileDevice()) {
-        updateStatus("Desktop detected. Redirecting to the YouTube watch page.");
-        window.location.href = buildWebUrl();
-        return;
-      }
+      window.setTimeout(() => {
+        window.location.href = buildAndroidIntentUrl();
+      }, 120);
 
-      updateStatus("Attempting to open the YouTube app.");
-      scheduleFallback();
-      window.location.href = selectAppUrl();
+      window.setTimeout(() => {
+        updateStatus("Still here?", "Use the button below if Android did not leave the in-app browser.");
+        showActions("android");
+      }, 1450);
     }
 
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) {
-        cancelFallback();
-      }
-    });
+    function attemptGenericIosOpen() {
+      updateStatus("Opening YouTube...", "Trying the YouTube app directly.");
 
-    window.addEventListener("pagehide", cancelFallback);
+      window.setTimeout(() => {
+        window.location.href = buildYouTubeAppUrl();
+      }, 120);
+
+      window.setTimeout(() => {
+        updateStatus("Still here?", "Use Safari or the browser fallback if the app did not open.");
+        showActions("instagram-ios");
+      }, 1450);
+    }
+
+    function attemptDesktopOpen() {
+      updateStatus("Redirecting...", "Desktop detected. Sending you straight to the YouTube watch page.");
+
+      window.setTimeout(() => {
+        window.location.replace(buildTrackedWebUrl());
+      }, 120);
+    }
 
     window.addEventListener("load", () => {
-      wireButtons();
+      browserActionNode.href = buildTrackedWebUrl();
 
-      if (!isMobileDevice()) {
-        window.setTimeout(() => {
-          updateStatus("Desktop detected. Redirecting to the YouTube watch page.");
-          window.location.href = buildWebUrl();
-        }, 150);
+      if (!isIos() && !isAndroid()) {
+        attemptDesktopOpen();
         return;
       }
 
-      updateStatus('Tap "Open in YouTube" to launch the app. If it does not open, this page will fall back to the browser version.');
-    });
+      if (isIos() && isInstagramFamilyBrowser()) {
+        attemptInstagramIosEscape();
+        return;
+      }
 
-    appButton.addEventListener("click", (event) => {
-      event.preventDefault();
-      attemptOpen();
+      if (isAndroid()) {
+        attemptAndroidOpen();
+        return;
+      }
+
+      attemptGenericIosOpen();
     });
   </script>
 </body>

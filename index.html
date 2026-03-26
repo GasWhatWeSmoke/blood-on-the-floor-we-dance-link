@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Opening YouTube | Blood On The Floor We Dance</title>
+  <title>Opening YouTube</title>
   <meta name="description" content="Opening Blood On The Floor We Dance in YouTube.">
-  <meta name="theme-color" content="#020203">
+  <meta name="theme-color" content="#000000">
   <meta property="og:title" content="Blood On The Floor We Dance">
   <meta property="og:description" content="Open the music video in YouTube.">
   <meta property="og:type" content="website">
@@ -18,11 +18,10 @@
   <style>
     :root {
       color-scheme: dark;
-      --bg: #020203;
-      --text: #f8f8f6;
-      --muted: #b1b1ac;
-      --line: rgba(255, 255, 255, 0.08);
-      --accent: #ffffff;
+      --bg: #000000;
+      --text: #f4f4f2;
+      --muted: #a5a5a0;
+      --line: rgba(255, 255, 255, 0.12);
     }
 
     * {
@@ -39,66 +38,66 @@
     }
 
     body {
+      overflow: hidden;
+    }
+
+    .shell {
+      min-height: 100vh;
       display: grid;
       place-items: center;
-      padding: 20px;
+      padding: 18px;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 120ms ease;
+    }
+
+    .shell.visible {
+      visibility: visible;
+      opacity: 1;
     }
 
     main {
-      width: min(100%, 420px);
+      width: min(100%, 340px);
       text-align: center;
-    }
-
-    .spinner {
-      width: 40px;
-      height: 40px;
-      margin: 0 auto 18px;
-      border: 2px solid rgba(255, 255, 255, 0.12);
-      border-top-color: rgba(255, 255, 255, 0.9);
-      border-radius: 999px;
-      animation: spin 900ms linear infinite;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(1.2rem, 4vw, 1.5rem);
+      font-size: 1rem;
       font-weight: 700;
       letter-spacing: 0.02em;
     }
 
     p {
-      margin: 12px 0 0;
+      margin: 10px 0 0;
       color: var(--muted);
-      line-height: 1.55;
-      font-size: 0.96rem;
+      line-height: 1.45;
+      font-size: 0.92rem;
     }
 
     .actions {
-      display: none;
-      gap: 10px;
-      margin-top: 22px;
-    }
-
-    .actions.visible {
       display: grid;
+      gap: 10px;
+      margin-top: 18px;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 50px;
+      min-height: 46px;
+      padding: 12px 16px;
       border-radius: 999px;
-      padding: 12px 18px;
       text-decoration: none;
+      font-size: 0.95rem;
       font-weight: 700;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
       border: 1px solid var(--line);
     }
 
     .button.primary {
-      background: var(--accent);
-      color: #070708;
+      background: #ffffff;
+      color: #050506;
       border-color: transparent;
     }
 
@@ -108,36 +107,32 @@
     }
 
     .note {
-      margin-top: 18px;
-      font-size: 0.82rem;
-      color: #8b8b87;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: #858580;
     }
   </style>
 </head>
 <body>
-  <main>
-    <div class="spinner" aria-hidden="true"></div>
-    <h1 id="headline">Opening YouTube...</h1>
-    <p id="status">Trying the fastest route out of the Instagram browser.</p>
+  <div class="shell" id="shell">
+    <main>
+      <h1 id="headline">Still inside Instagram?</h1>
+      <p id="status">Tap Safari first. It gives YouTube the best chance to open the app.</p>
 
-    <div class="actions" id="actions">
-      <a class="button primary" id="primary-action" href="#">Open in Safari</a>
-      <a class="button secondary" id="secondary-action" href="#">Open in YouTube</a>
-      <a class="button secondary" id="browser-action" href="#">Watch in Browser</a>
-    </div>
+      <div class="actions">
+        <a class="button primary" id="primary-action" href="#">Open in Safari</a>
+        <a class="button secondary" id="secondary-action" href="#">Open in YouTube</a>
+        <a class="button secondary" id="browser-action" href="#">Watch in Browser</a>
+      </div>
 
-    <p class="note" id="note">This page is only here to escape the in-app browser as fast as possible.</p>
-  </main>
+      <p class="note" id="note">This page only appears if the automatic handoff fails.</p>
+    </main>
+  </div>
 
   <script>
     const config = {
       videoId: "sb3vU8yWJJ4",
+      revealDelay: 1100,
       defaultTracking: {
         utm_source: "meta",
         utm_medium: "paid_social",
@@ -146,13 +141,14 @@
       }
     };
 
+    const shellNode = document.getElementById("shell");
     const headlineNode = document.getElementById("headline");
     const statusNode = document.getElementById("status");
     const noteNode = document.getElementById("note");
-    const actionsNode = document.getElementById("actions");
     const primaryActionNode = document.getElementById("primary-action");
     const secondaryActionNode = document.getElementById("secondary-action");
     const browserActionNode = document.getElementById("browser-action");
+    let handoffSucceeded = false;
 
     function isIos() {
       return /iPhone|iPad|iPod/i.test(navigator.userAgent || "");
@@ -201,14 +197,24 @@
         ";end;";
     }
 
-    function showActions(mode) {
+    function markHandoff() {
+      handoffSucceeded = true;
+    }
+
+    function revealFallback(headline, message, note, mode) {
+      if (handoffSucceeded || document.hidden) {
+        return;
+      }
+
       const webUrl = buildTrackedWebUrl();
       const safariUrl = buildSafariEscapeUrl();
       const legacySafariUrl = buildLegacySafariEscapeUrl();
       const youtubeAppUrl = buildYouTubeAppUrl();
       const androidIntentUrl = buildAndroidIntentUrl();
 
-      actionsNode.classList.add("visible");
+      headlineNode.textContent = headline;
+      statusNode.textContent = message;
+      noteNode.textContent = note;
       browserActionNode.href = webUrl;
 
       if (mode === "instagram-ios") {
@@ -216,90 +222,101 @@
         primaryActionNode.href = safariUrl;
         secondaryActionNode.textContent = "Open in YouTube";
         secondaryActionNode.href = youtubeAppUrl;
-        noteNode.textContent = "If Safari opens, Safari should have the best shot at handing off to the YouTube app.";
+
+        primaryActionNode.onclick = (event) => {
+          event.preventDefault();
+          window.location.href = safariUrl;
+          window.setTimeout(() => {
+            window.location.href = legacySafariUrl;
+          }, 350);
+        };
       } else if (mode === "android") {
         primaryActionNode.textContent = "Open in YouTube";
         primaryActionNode.href = androidIntentUrl;
         secondaryActionNode.textContent = "Watch in Browser";
         secondaryActionNode.href = webUrl;
-        noteNode.textContent = "Android uses an intent link first, then falls back to the YouTube web URL.";
+        primaryActionNode.onclick = null;
       } else {
         primaryActionNode.textContent = "Open in YouTube";
         primaryActionNode.href = youtubeAppUrl;
         secondaryActionNode.textContent = "Watch in Browser";
         secondaryActionNode.href = webUrl;
-        noteNode.textContent = "If the app does not open, use the browser button.";
+        primaryActionNode.onclick = null;
       }
 
-      primaryActionNode.addEventListener("click", (event) => {
-        if (mode === "instagram-ios") {
-          event.preventDefault();
-          window.location.href = safariUrl;
-          window.setTimeout(() => {
-            window.location.href = legacySafariUrl;
-          }, 500);
-        }
-      }, { once: true });
-    }
-
-    function updateStatus(headline, message) {
-      headlineNode.textContent = headline;
-      statusNode.textContent = message;
+      shellNode.classList.add("visible");
     }
 
     function attemptInstagramIosEscape() {
-      updateStatus("Opening Safari first...", "Trying to leave Instagram's browser before opening YouTube.");
-
       const safariUrl = buildSafariEscapeUrl();
       const legacySafariUrl = buildLegacySafariEscapeUrl();
 
       window.setTimeout(() => {
-        window.location.href = safariUrl;
-      }, 120);
+        window.location.replace(safariUrl);
+      }, 40);
 
       window.setTimeout(() => {
-        window.location.href = legacySafariUrl;
-      }, 650);
+        window.location.replace(legacySafariUrl);
+      }, 360);
 
       window.setTimeout(() => {
-        updateStatus("Tap to continue", "Instagram stayed in control. The best free workaround is to force Safari first.");
-        showActions("instagram-ios");
-      }, 1450);
+        revealFallback(
+          "Still inside Instagram?",
+          "Tap Safari first. It gives YouTube the best chance to open the app.",
+          "This page only appears if Instagram blocked the automatic escape.",
+          "instagram-ios"
+        );
+      }, config.revealDelay);
     }
 
     function attemptAndroidOpen() {
-      updateStatus("Opening YouTube...", "Trying the Android app link first.");
+      const androidIntentUrl = buildAndroidIntentUrl();
 
       window.setTimeout(() => {
-        window.location.href = buildAndroidIntentUrl();
-      }, 120);
+        window.location.replace(androidIntentUrl);
+      }, 40);
 
       window.setTimeout(() => {
-        updateStatus("Still here?", "Use the button below if Android did not leave the in-app browser.");
-        showActions("android");
-      }, 1450);
+        revealFallback(
+          "Still inside the browser?",
+          "Tap the button below to try the YouTube app again.",
+          "Android intent links usually work best before the browser fallback.",
+          "android"
+        );
+      }, config.revealDelay);
     }
 
     function attemptGenericIosOpen() {
-      updateStatus("Opening YouTube...", "Trying the YouTube app directly.");
+      const youtubeAppUrl = buildYouTubeAppUrl();
 
       window.setTimeout(() => {
-        window.location.href = buildYouTubeAppUrl();
-      }, 120);
+        window.location.replace(youtubeAppUrl);
+      }, 40);
 
       window.setTimeout(() => {
-        updateStatus("Still here?", "Use Safari or the browser fallback if the app did not open.");
-        showActions("instagram-ios");
-      }, 1450);
+        revealFallback(
+          "Still here?",
+          "Try Safari first, then YouTube if the app did not open.",
+          "Safari can improve the chance of the YouTube app opening on iPhone.",
+          "instagram-ios"
+        );
+      }, config.revealDelay);
     }
 
     function attemptDesktopOpen() {
-      updateStatus("Redirecting...", "Desktop detected. Sending you straight to the YouTube watch page.");
-
       window.setTimeout(() => {
         window.location.replace(buildTrackedWebUrl());
-      }, 120);
+      }, 40);
     }
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        markHandoff();
+      }
+    });
+
+    window.addEventListener("pagehide", markHandoff);
+    window.addEventListener("blur", markHandoff);
 
     window.addEventListener("load", () => {
       browserActionNode.href = buildTrackedWebUrl();
